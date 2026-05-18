@@ -220,5 +220,59 @@ export const chapters: Chapter[] = [
       "/images/ch202/10.webp",
       "/images/ch202/11.webp"
     ]
+  },
+  {
+    id: "13",
+    title: "Chapter 203",
+    images: [
+      "/images/ch203/01.webp",
+      "/images/ch203/02.webp",
+      "/images/ch203/03.webp",
+      "/images/ch203/04.webp",
+      "/images/ch203/05.webp",
+      "/images/ch203/06.webp",
+      "/images/ch203/07.webp",
+      "/images/ch203/08.webp",
+      "/images/ch203/09.webp",
+      "/images/ch203/10.webp",
+      "/images/ch203/11.webp",
+      "/images/ch203/12.webp",
+      "/images/ch203/13.webp"
+    ]
+  },
+  {
+    id: "14",
+    title: "Chapter 204",
+    images: [
+      "/images/ch204/01.webp",
+      "/images/ch204/02.webp",
+      "/images/ch204/03.webp",
+      "/images/ch204/04.webp",
+      "/images/ch204/05.webp",
+      "/images/ch204/06.webp",
+      "/images/ch204/07.webp",
+      "/images/ch204/08.webp",
+      "/images/ch204/09.webp",
+      "/images/ch204/10.webp",
+      "/images/ch204/11.webp",
+      "/images/ch204/12.webp"
+    ]
+  },
+  {
+    id: "15",
+    title: "Chapter 205",
+    images: [
+      "/images/ch205/01.webp",
+      "/images/ch205/02.webp",
+      "/images/ch205/03.webp",
+      "/images/ch205/04.webp",
+      "/images/ch205/05.webp",
+      "/images/ch205/06.webp",
+      "/images/ch205/07.webp",
+      "/images/ch205/08.webp",
+      "/images/ch205/09.webp",
+      "/images/ch205/10.webp",
+      "/images/ch205/11.webp"
+    ]
   }
 ];

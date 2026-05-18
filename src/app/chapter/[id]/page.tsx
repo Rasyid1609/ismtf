@@ -1,39 +1,80 @@
-import React from 'react'
+"use client";
+
+import React from "react";
 import { chapters } from "@/data/chapters";
 import Link from "next/link";
-import {Chapter} from "@/types/chapter";
+import { useRouter, useParams } from "next/navigation";
 
+export default function Page() {
+  const router = useRouter();
+  const params = useParams();
 
-export default async function page({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  console.log("ALL CHAPTERS:", chapters);
-  const { id } = await params;
-    const chapter = chapters.find((c) => c.id === String(id));
-      if (!chapter) {return <div>Chapter tidak ditemukan</div>};
+  const id = params.id as string;
 
-  const currentIndex = chapters.findIndex((c) => c.id === String(id));
+  const chapter = chapters.find((c) => c.id === id);
+
+  if (!chapter) {
+    return <div>Chapter tidak ditemukan</div>;
+  }
+
+  const currentIndex = chapters.findIndex((c) => c.id === id);
+
   const prev = chapters[currentIndex - 1];
   const next = chapters[currentIndex + 1];
+
   return (
-    <div>
-      <h2 className="text-xl mb-4">{chapter.title}</h2>
+    <div className="max-w-4xl mx-auto py-6">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+        <h2 className="text-2xl font-bold text-white">
+          {chapter.title}
+        </h2>
+
+        {/* Combo Box */}
+        <select
+          value={chapter.id}
+          onChange={(e) => router.push(`/chapter/${e.target.value}`)}
+          className="
+            bg-zinc-900
+            border border-zinc-700
+            text-white
+            px-4 py-2
+            rounded-lg
+            outline-none
+            focus:border-yellow-500
+          "
+        >
+          {chapters.map((chap) => (
+            <option key={chap.id} value={chap.id}>
+              {chap.title}
+            </option>
+          ))}
+        </select>
+      </div>
 
       {/* Navigation */}
-      <div className="flex justify-between mb-4">
+      <div className="flex justify-between mb-6">
         {prev ? (
-          <Link href={`/chapter/${prev.id}`} className="text-blue-400">
+          <Link
+            href={`/chapter/${prev.id}`}
+            className="text-yellow-400 hover:text-yellow-300"
+          >
             ← Prev
           </Link>
-        ) : <div />}
+        ) : (
+          <div />
+        )}
 
         {next ? (
-          <Link href={`/chapter/${next.id}`} className="text-blue-400">
+          <Link
+            href={`/chapter/${next.id}`}
+            className="text-yellow-400 hover:text-yellow-300"
+          >
             Next →
           </Link>
-        ) : <div />}
+        ) : (
+          <div />
+        )}
       </div>
 
       {/* Images */}
@@ -42,11 +83,58 @@ export default async function page({
           <img
             key={i}
             src={img}
-            alt={`${i}`}
-            className="w-full"
+            alt={`Page ${i + 1}`}
+            className="w-full rounded-md"
           />
         ))}
       </div>
-    </div>
+
+      {/* Combo Box */}
+        <select
+          value={chapter.id}
+          onChange={(e) => router.push(`/chapter/${e.target.value}`)}
+          className="
+            bg-zinc-900
+            border border-zinc-700
+            text-white
+            px-4 py-2
+            rounded-lg
+            outline-none
+            mt-6
+            focus:border-yellow-500
+          "
+        >
+          {chapters.map((chap) => (
+            <option key={chap.id} value={chap.id}>
+              {chap.title}
+            </option>
+          ))}
+        </select>
+        <div className="flex justify-between mb-6 mt-6">
+        {prev ? (
+          <Link
+            href={`/chapter/${prev.id}`}
+            className="text-yellow-400 hover:text-yellow-300"
+          >
+            ← Prev
+          </Link>
+        ) : (
+          <div />
+        )}
+
+        {next ? (
+          <Link
+            href={`/chapter/${next.id}`}
+            className="text-yellow-400 hover:text-yellow-300"
+          >
+            Next →
+          </Link>
+        ) : (
+          <div />
+        )}
+      </div>
+      </div>
+
+    
   );
 }
