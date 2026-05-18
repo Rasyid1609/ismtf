@@ -148,10 +148,6 @@ export default function RootLayout({
             </section>
           </div>
         </main>
-<<<<<<< HEAD
-
-=======
->>>>>>> eaf83e4943afbda35ad251f1c13f2565c78b0166
         <Analytics />
       </body>
     </html>
